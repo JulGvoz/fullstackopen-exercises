@@ -1,0 +1,29 @@
+# once again, this file contains many parts
+# which are not original - more specifically
+# they are pasted from the example given in 
+# exercise 0.4: new note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->browser: HTML-code
+
+note over browser:
+begins parsing HTML
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->browser: spa.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [...,  { content: "Exercise note", date: "2020-12-05T19:10:37.437Z" }]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note

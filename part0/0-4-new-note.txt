@@ -1,0 +1,35 @@
+# original content starts here
+note over browser:
+user writes a note and
+presses the Send button
+end note
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+server-->browser: 302 Found Location: /exampleapp/notes
+
+note over browser:
+browser reloads the page,
+sending a new GET request
+end note
+# original content ends here
+# everything past here was simply copy-pasted, 
+# since it shows the rest of the events perfectly
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+server-->browser: HTML-code
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->browser: main.css
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->browser: [...,  { content: "Exercise note", date: "2020-12-05T19:10:37.437Z" }]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note

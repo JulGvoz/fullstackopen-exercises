@@ -1,0 +1,29 @@
+note over browser:
+user writes a note and
+clicks the Save button
+end note
+
+note over browser:
+JavaScript code updates the <ul>
+appending a <li> containing the note
+and sends a POST request while
+blocking normal handing of a <form>
+end note
+
+browser -> server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+server --> browser : 201 Created
+
+note over browser:
+there is an important difference between
+SPA and traditional version of the pages:
+traditional version would also update the
+page the user sees with other notes that 
+would have been uploaded during the time 
+that user had the page open before
+submitting. SPA does not receive an
+updated list of notes, therefore is
+ignorant of any new notes that could have
+been posted in that time. Possible
+solution to this is some kind of polling on
+a timer.
+end note
