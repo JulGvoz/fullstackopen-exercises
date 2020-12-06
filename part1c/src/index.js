@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const Display = ({ counter }) => <div>{counter}</div>
+const Display = ({ counter }) => <span>{counter}</span>
 
 
 const Button = ({ handleClick, text }) => (
@@ -12,18 +12,15 @@ const Button = ({ handleClick, text }) => (
 
 
 const App = () => {
-  const [counter, setCounter] = useState(0)
-
-  const increaseByOne = () => setCounter(counter + 1)
-  const decreaseByOne = () => setCounter(counter - 1)
-  const setToZero = () => setCounter(0)
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
 
   return (
     <div>
-      <Display counter={counter} />
-      <Button handleClick={increaseByOne} text="plus" />
-      <Button handleClick={decreaseByOne} text="minus" />
-      <Button handleClick={setToZero} text="reset" />
+      <Display counter={left} />
+      <Button handleClick={() => setLeft(left + 1)} text="left" />
+      <Button handleClick={() => setRight(right + 1)} text="right" />
+      <Display counter={right} />
     </div>
   )
 }
