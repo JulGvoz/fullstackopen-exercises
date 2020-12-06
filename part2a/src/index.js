@@ -1,28 +1,50 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 
-const Button = ({ handleClick, text }) => (
-  <button onClick={handleClick}>
-    {text}
-  </button>
-)
+const Note = ({ note }) => {
+  return (
+    <li>
+      {note.content}
+    </li>
+  )
+}
 
-const App = () => {
-  const [value, setValue] = useState(10)
+const notes = [
+  {
+    id: 1,
+    content: 'HTML is easy',
+    date: '2019-05-30T17:30:31.098Z',
+    important: true
+  },
+  {
+    id: 2,
+    content: 'Browser can execute only JavaScript',
+    date: '2019-05-30T18:39:34.091Z',
+    important: false
+  },
+  {
+    id: 3,
+    content: 'GET and POST are the most important methods of HTTP protocol',
+    date: '2019-05-30T19:20:14.298Z',
+    important: true
+  }
+]
 
-  const setToValue = (newValue) => () => setValue(newValue)
+const App = ({ notes }) => {
 
   return (
     <div>
-      {value}
-      <Button handleClick={setToValue(1000)} text="1000" />
-      <Button handleClick={setToValue(0)} text="0" />
-      <Button handleClick={setToValue(value + 1)} text="+" />
+      <h1>Notes</h1>
+      <ul>
+        {notes.map(note =>
+          <Note key={note.id} note={note} />
+        )}
+      </ul>
     </div>
   )
 }
 
 ReactDOM.render(
-  <App />,
-  document.getElementById("root")
+  <App notes={notes} />,
+  document.getElementById('root')
 )
