@@ -1,5 +1,7 @@
 # fullstackopen-exercises
 
+My exercises and progress on the course at https://fullstackopen.com/en/about
+
 ## Note regarding part0 exercises
 
 The directory `part0-exercises` was originally called `part0`
