@@ -11,8 +11,14 @@ const App = () => {
     const newPerson = {
       name: newName
     }
-    setNewName('')
-    setPersons(persons.concat(newPerson))
+    // if name is already in the phonebook
+    if (persons.map(({ name }) => name).findIndex(n => n == newName) != -1) {
+      alert(`${newName} is already added to phonebook`)
+    } else {
+      // intentional
+      setNewName('')
+      setPersons(persons.concat(newPerson))
+    }
   }
 
   return (
