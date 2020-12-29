@@ -41,6 +41,20 @@ const PersonForm = ({ handler, nameState, numberState }) => {
   )
 }
 
+const Persons = ({ persons, filterText }) => {
+  const filtered_persons = persons.filter(({ name }) => {
+    return name.toLowerCase().search(filterText.toLowerCase()) != -1
+  })
+
+  return (
+    filtered_persons.map(({ name, number }) => {
+      return (
+        <div key={name}>{name} {number}</div>
+      )
+    })
+  )
+}
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456' },
@@ -69,30 +83,26 @@ const App = () => {
     }
   }
 
-  const filtered_persons = persons.filter(({ name }) => {
-    return name.toLowerCase().search(filterText.toLowerCase()) != -1
-  })
-
   return (
     <div>
       <h2>Phonebook</h2>
+
       <Filter filterState={[filterText, setFilterText]} />
-      <h2>add a new</h2>
+
+      <h3>add a new</h3>
+
       <PersonForm
         handler={handleNewPerson}
         nameState={[newName, setNewName]}
         numberState={[newNumber, setNewNumber]}
       />
-      <h2>Numbers</h2>
-      <ul>
-        {
-          filtered_persons.map(({ name, number }) => {
-            return (
-              <li key={name}>{name} {number}</li>
-            )
-          })
-        }
-      </ul>
+
+      <h3>Numbers</h3>
+
+      <Persons
+        persons={persons}
+        filterText={filterText}
+      />
     </div>
   )
 }
