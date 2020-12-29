@@ -15,6 +15,32 @@ const Filter = ({ filterState }) => {
   )
 }
 
+const PersonForm = ({ handler, nameState, numberState }) => {
+  const [newName, setNewName] = nameState
+  const [newNumber, setNewNumber] = numberState
+  return (
+    <form onSubmit={handler}>
+      <div>
+        name: <input
+          value={newName}
+          onChange={(event) => {
+            setNewName(event.target.value)
+          }} />
+      </div>
+      <div>
+        number: <input
+          value={newNumber}
+          onChange={(event) => {
+            setNewNumber(event.target.value)
+          }} />
+      </div>
+      <div>
+        <button type="submit">add</button>
+      </div>
+    </form>
+  )
+}
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456' },
@@ -52,25 +78,11 @@ const App = () => {
       <h2>Phonebook</h2>
       <Filter filterState={[filterText, setFilterText]} />
       <h2>add a new</h2>
-      <form onSubmit={handleNewPerson}>
-        <div>
-          name: <input
-            value={newName}
-            onChange={(event) => {
-              setNewName(event.target.value)
-            }} />
-        </div>
-        <div>
-          number: <input
-            value={newNumber}
-            onChange={(event) => {
-              setNewNumber(event.target.value)
-            }} />
-        </div>
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
+      <PersonForm
+        handler={handleNewPerson}
+        nameState={[newName, setNewName]}
+        numberState={[newNumber, setNewNumber]}
+      />
       <h2>Numbers</h2>
       <ul>
         {
