@@ -43,7 +43,7 @@ const PersonForm = ({ handler, nameState, numberState }) => {
 
 const Persons = ({ persons, filterText }) => {
   const filtered_persons = persons.filter(({ name }) => {
-    return name.toLowerCase().search(filterText.toLowerCase()) != -1
+    return name.toLowerCase().search(filterText.toLowerCase()) !== -1
   })
 
   return (
@@ -73,7 +73,7 @@ const App = () => {
       number: newNumber
     }
     // if name is already in the phonebook
-    if (persons.map(({ name }) => name).findIndex(n => n == newName) != -1) {
+    if (persons.map(({ name }) => name).findIndex(n => n === newName) !== -1) {
       alert(`${newName} is already added to phonebook`)
     } else {
       // intentional
