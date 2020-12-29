@@ -16,6 +16,14 @@ To start the site without opening a browser, you can run `BROWSER=NONE npm start
 
 To stop running the site, just press `CTRL + C`
 
+### Running json-server
+
+Some projects (starting part2c), require `json-server`
+
+You can install `json-server` using `npm install -g json-server` and run it using `npm run server`
+
+(Make sure you follow steps in https://fullstackopen.com/en/part2/getting_data_from_server )
+
 ## Note regarding part0 exercises
 
 The directory `part0-exercises` was originally called `part0`
