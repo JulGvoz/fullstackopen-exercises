@@ -2,6 +2,20 @@
 
 My exercises and progress on the course at https://fullstackopen.com/en/about
 
+## Running this repository
+
+1. Make sure Node.js is installed
+2. Make sure npm is updated with `npm update -g`
+3. Open console in the appropriate folder (e. g. `fullstackopen-exercises/part1-exercises/course-information`)
+4. Install everything that is specified in `package.json` with `npm install`
+5. Start the site with `npm start`
+
+You make changes to the site and they will show up live, as long as `npm start` is running.
+
+To start the site without opening a browser, you can run `BROWSER=NONE npm start`, or add a file in the same location as `package.json` named `.env`, containing `BROWSER=NONE`
+
+To stop running the site, just press `CTRL + C`
+
 ## Note regarding part0 exercises
 
 The directory `part0-exercises` was originally called `part0`
