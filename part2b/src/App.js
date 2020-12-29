@@ -33,7 +33,7 @@ const App = (props) => {
       <h1>Notes</h1>
       <div>
         <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'importnat' : 'all'}
+          show {showAll ? 'important' : 'all'}
         </button>
       </div>
       <ul>
