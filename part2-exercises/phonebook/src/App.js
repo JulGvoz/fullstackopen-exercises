@@ -1,5 +1,20 @@
 import React, { useState } from 'react'
 
+const Filter = ({ filterState }) => {
+  const [filterText, setFilterText] = filterState
+
+  return (
+    <div>
+      filter shown with <input
+        value={filterText}
+        onChange={(event) => {
+          setFilterText(event.target.value)
+        }}
+      />
+    </div>
+  )
+}
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456' },
@@ -35,14 +50,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <div>
-        filter shown with <input
-          value={filterText}
-          onChange={(event) => {
-            setFilterText(event.target.value)
-          }}
-        />
-      </div>
+      <Filter filterState={[filterText, setFilterText]} />
       <h2>add a new</h2>
       <form onSubmit={handleNewPerson}>
         <div>
