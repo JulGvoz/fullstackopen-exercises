@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const Countries = ({ filtered, setName }) => {
-  if (filtered.length == 0) {
+  if (filtered.length === 0) {
     return (
       <p>Cannot find any countries with that name</p>
     )
@@ -34,7 +34,7 @@ const Country = ({ country }) => {
       <ul>
         {country.languages.map(language => <li>{language.name}</li>)}
       </ul>
-      <img src={country.flag} width="200" />
+      <img src={country.flag} alt={`flag of ${country.name}`} width="200" />
     </div>
   )
 }
@@ -53,7 +53,7 @@ const App = () => {
   useEffect(hook, [])
 
   const filteredCountries = countries.filter(country => {
-    return country.name.toLowerCase().search(name.toLowerCase()) != -1
+    return country.name.toLowerCase().search(name.toLowerCase()) !== -1
   })
 
   return (
