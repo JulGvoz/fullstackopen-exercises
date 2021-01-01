@@ -33,7 +33,8 @@ const Country = ({ country }) => {
       .get("http://api.weatherstack.com/current", {
         params: {
           access_key: api_key,
-          query: country.capital
+          query: country.capital,
+          units: "m"
         }
       })
     console.log(promise)
@@ -72,6 +73,11 @@ const Weather = ({ weather }) => {
         <h2>Weather in {weather.location.name}</h2>
         <strong>temperature: </strong>
         { weather.current.temperature} Celsius
+        <div>
+          <img src={weather.current.weather_icons[0]} alt="weather icon" />
+        </div>
+        <strong>wind: </strong> {weather.current.wind_speed} km/h
+        direction {weather.current.wind_dir}
       </div>
     )
   }
