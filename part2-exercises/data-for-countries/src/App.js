@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const Countries = ({ filtered }) => {
+const Countries = ({ filtered, setName }) => {
   if (filtered.length == 0) {
     return (
       <p>Cannot find any countries with that name</p>
@@ -12,7 +12,12 @@ const Countries = ({ filtered }) => {
     )
   } else if (filtered.length > 1) {
     return filtered.map(country => {
-      return <div>{country.name}</div>
+      return <div>
+        {country.name}
+        <button onClick={() => {
+          setName(country.name)
+        }}>show</button>
+      </div>
     })
   } else {
     return <Country country={filtered[0]} />
@@ -56,7 +61,10 @@ const App = () => {
       find countries <input onChange={event => {
         setName(event.target.value)
       }} value={name}></input>
-      <Countries filtered={filteredCountries} />
+      <Countries
+        filtered={filteredCountries}
+        setName={setName}
+      />
     </div>
   )
 }
